@@ -1,0 +1,5 @@
+{
+  "globalDevDependencies": {
+    "fastclick": "registry:dt/fastclick#1.0.3+20160510002910"
+  }
+}
