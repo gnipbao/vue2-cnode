@@ -1,20 +1,20 @@
 <template>
     <div>
-        <img class="index" src="../assets/logo.png">
-        <nv-Home>
-
-        </nv-Home>
+        <img class="index" src="../assets/logo.png">      
     </div>
 </template>
+
 <script>
-    import nvHome from '../components/home.vue'
     export default {
         data() {
+            return {
 
+            }
         },
-        components: {
-            nvHome,
-        }
+        components:{
+            
+        },
+
     };
 </script>
 <style lang="scss">
