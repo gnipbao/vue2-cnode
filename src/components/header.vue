@@ -1,64 +1,106 @@
 <template>
     <div>
-        <div class="page-cover"
-                v-if="show&&fixHead"
-                @click="showMenus">
-        </div>
-        <header :class="{'show':show&&fixHead,'fix-header':fixHead,'no-fix':!fixHead}" id="hd">
-            <div class="nv-toolbar">
-                <div class="toolbar-nav"
-                        @click="openMenu"
-                        v-if="fixHead">
-                </div>
-                <span v-text="pageType"></span>
-                <i class="num" v-if="messageCount > 0"> {{messageCount}}</i>
-                <router-link to="/add">
-                    <i v-if="needAdd" v-show="!messageCount || messageCount <= 0"
-                        class="iconfont add-icon">&#xe60f;</i>
-                </router-link>
-            </div>
+        <span class="page-cover"
+            @click="toggleMenu"
+            v-if="show">
+        </span>
+        <header class="header-bar">
+
+            <span class="menu-btn"
+                @click="toggleMenu"></span>
+            <span class="info">
+                <span class="vue-logo"></span>
+                <span>{{title}}</span>
+            </span>
+            <router-link :to="{name: 'create'}" class="publish-btn">
+                <i class="iconfont icon-publish green"></i>
+            </router-link>
         </header>
-       <!--  <nv-menu :show-menu="show"
-            :page-type="pageType"
-            :nick-name="nickname"
-            :profile-url="profileimgurl"
-            v-if="fixHead" ></nv-menu> -->
+        <!-- <nv-menu :show="show"></nv-menu> -->
     </div>
 </template>
 
+<style lang="scss">
+
+@import 'src/style/mixin';
+
+.green{
+    color: $green;
+}
+.page-cover {
+    position: fixed;
+    top: 0.4rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 7;
+}
+
+.header-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.4rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    z-index: 6;
+    background-color: rgba(255, 255, 255, 0.95);
+    transition: all .3s ease;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    .menu-btn {
+        @include wh(0.44rem, 0.4rem);
+        background: url("../assets/menu.png") center center no-repeat;
+        background-size: .24rem;
+    }
+    .info {
+        flex: 1;
+        text-align: center;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: .15rem;
+        .vue-logo {
+            width: .4rem;
+            height: .4rem;
+            background: url("../assets/logo.png") center center no-repeat;
+            background-size: 0.24rem;
+        }
+    }
+    a.publish-btn {
+        color: #42b983;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+        display: block;
+    }
+}
+</style>
+
 <script>
-    import $ from 'webpack-zepto'
     //import nvMenu from './menu.vue'
     export default {
-        replace: true,
-        props: {
-            pageType: String,
-            fixHead: Boolean,
-            messageCount: Number,
-            needAdd: {
-                type: Boolean,
-                default: true
-            }
-        },
         data() {
             return {
-                nickname: '',
-                profileimgurl: '',
                 show: false
-            };
+            }
+        },
+        props: {
+            title: {
+                type: String,
+                default: ''
+            }
         },
         methods: {
-            openMenu() {
-                $('html, body, #page').addClass('scroll-hide');
+            toggleMenu() {
                 this.show = !this.show;
-            },
-            showMenus() {
-                this.show = !this.show;
-                $('html, body, #page').removeClass('scroll-hide');
             }
         },
         components: {
             //nvMenu
         }
-    };
+    }
 </script>

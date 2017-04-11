@@ -5,8 +5,10 @@ import store from './store/'
 import {
 	routerMode
 } from './config/env'
+
 import './utils/rem'
 import FastClick from 'fastclick'
+import 'github-markdown-css'
 
 if ('addEventListener' in document) {
 	document.addEventListener('DOMContentLoaded', function() {

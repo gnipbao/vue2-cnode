@@ -12,20 +12,8 @@
         </section>
     </section>
 </template>
-<script>
-    import userInfo from './userinfo'
-    export default {
-        replace: true,
-        props: ['showMenu', 'pageType', 'nickName', 'profileUrl'],
-        components: {
-            userInfo
-        }
-    };
-</script>
-
 <style lang="scss">
     /*侧边栏*/
-    
     .nav-list {
         position: fixed;
         top: 0;
@@ -68,3 +56,43 @@
         }
     }
 </style>
+
+<script>
+    import {mapState} from 'vuex';
+    import userInfo from './userinfo'
+    import { messageCount } from '../config/apis';
+    export default {
+       data() {
+            return {
+                messageCount: 0
+            }
+       },
+       mouted() {
+            this.getMessageCount();
+       },
+
+       methods: {
+            getMessageCount() {
+                  if (this.userInfo.loginname) {
+                    messageCount({accesstoken: this.userInfo.accesstoken}).then((res) => {
+                        if (res.success) {
+                            this.messageCount = res.data;
+                        }
+                    })
+                }
+            }
+       },
+
+       props: {
+            show: Boolean
+       },
+
+       computed: {
+            ...mapState(['userInfo'])
+       },
+
+       components: {
+            UserInfo
+       }
+    }
+</script>
