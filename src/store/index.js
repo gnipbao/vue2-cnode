@@ -77,10 +77,10 @@ const store = new Vuex.Store({
 		}, data) {
 			commit(TOOGLE_LOAD, true);
 			return topicList(data).then((res) => {
-				if (res.success) {
+				var ret = res.data;
+				if (ret.success) {
 					commit(TOOGLE_LOAD, false);
-					console.log(res);
-					commit(GET_TOPIC_LIST, res.data);
+					commit(GET_TOPIC_LIST, ret.data);
 				}
 			})
 		},
@@ -91,9 +91,10 @@ const store = new Vuex.Store({
 			commit(TOOGLE_LIST_LOAD, true);
 
 			return topicList(data).then((res) => {
-				if (res.success) {
+				var ret = res.data;
+				if (ret.success) {
 					commit(TOOGLE_LIST_LOAD, false);
-					commit(UPDATE_TOPIC_LIST, res.data)
+					commit(UPDATE_TOPIC_LIST, ret.data)
 				}
 			})
 		},
@@ -103,9 +104,10 @@ const store = new Vuex.Store({
 		}, data) {
 			commit(TOOGLE_LOAD, true);
 			topicInfo(data).then((res) => {
-				if (res.success) {
+				var ret = res.data;
+				if (ret.success) {
 					commit(TOOGLE_LOAD, false);
-					commit(GET_TOPIC_INFO, res.data)
+					commit(GET_TOPIC_INFO, ret.data)
 				}
 			})
 		},
@@ -114,11 +116,12 @@ const store = new Vuex.Store({
 			commit
 		}, data) {
 			return login(data).then((res) => {
-				if (res.success) {
+				var ret = res.data;
+				if (ret.success) {
 					const user = {
-						loginname: res.loginname,
-						id: res.id,
-						avatar_url: res.avatar_url,
+						loginname: ret.loginname,
+						id: ret.id,
+						avatar_url: ret.avatar_url,
 						accesstoken: data.accesstoken
 					}
 					localStorage.setItem('userInfo', JSON.stringify(user));
@@ -134,7 +137,8 @@ const store = new Vuex.Store({
 			const topicId = data.topicId;
 			delete data.topicId;
 			reply(data, topicId).then((res) => {
-				if (res.success) {
+				var ret = res.data;
+				if (ret.success) {
 					dispatch(GET_TOPIC_INFO, topicId);
 				}
 			})

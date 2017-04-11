@@ -19,8 +19,8 @@
                                     <span>{{item.reply_count}}/{{item.visit_count}}</span>
                                 </p>
                                 <p>
-                                    <span>{{item.create_at | getTimeInfo}}</span>
-                                    <span>{{item.last_reply_at | getTimeInfo}}</span>
+                                    <span>{{item.create_at | timeAgo}}</span>
+                                    <span>{{item.last_reply_at | timeAgo}}</span>
                                 </p>
                             </div>
                         </div>
