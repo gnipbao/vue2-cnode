@@ -1,20 +1,56 @@
 <template>
     <div>
         <nv-head ref="head" :title="pageTitle"></nv-head>
+        <section class="topic">
+            <ul class="topic-list">
+                <li v-for="item of topics">
+                    <router-link key="item.id" :to="{name: 'topic', params:{id:item.id}}">
+                        <div class="top">
+                            <span class="normal" :class="{color: item.good || item.top}"
+                                v-text="getTabInfo(item)"></span>
+                            <h3 v-text="item.title" :title="item.title"></h3>
+                        </div>
+                        <div class="bottom">
+                            <span class="author"
+                                v-bind:style="{ backgroundImage: `url(${item.author.avatar_url})`}"></span>
+                            <div class="info">
+                                <p>
+                                    <span v-text="item.author.loginname"></span>
+                                    <span>{{item.reply_count}}/{{item.visit_count}}</span>
+                                </p>
+                                <p>
+                                    <span>{{item.create_at | getTimeInfo}}</span>
+                                    <span>{{item.last_reply_at | getTimeInfo}}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </router-link>
+                </li>
+            </ul>
+        </section>
+
+        <div v-show="showListLoad">
+            <div class="loading">
+                <i class="iconfont icon-loading"></i>
+            </div>
+        </div>
+
+        <nv-top></nv-top>
+        <nv-load v-show="showLoad"></nv-load>
     </div>
     
 </template>
 
 <style lang="scss">
     .loading {
-        width: 120px;
+        width: 1.2rem;
         /*height: 120px;*/
-        margin: 5px auto;
+        margin: 0.05px auto;
         text-align: center;
         .icon-loading {
             color: #ccc;
             display: inline-block;
-            font-size: 5rem;
+            font-size: .5rem;
             -webkit-animation: gif 1s infinite linear;
             animation: gif 1s infinite linear;
         }
@@ -36,11 +72,10 @@
                 -webkit-transform: rotate(360deg);
             }
         }
-    }
-     
+    }    
+
   .topic {
-    /*margin: 40px auto 0;*/
-    padding-top: 40px;
+    padding-top: .4rem;
     .topic-list {
         li {
             border-bottom: 1px solid #f0f0f0;
@@ -48,10 +83,10 @@
                 background-color: #f5f5f5;
             }
             a {
-                padding: 10px 15px;
+                padding: .10rem .15rem;
                 display: block;
                 .top {
-                    padding: 5px 0;
+                    padding: .05rem 0;
                     display: flex;
                     span.normal {
                         flex: 0 0 auto; //TODO:soulcm 为什么最后一个值flex-basis默认不是auto,还得自己设置
@@ -59,7 +94,7 @@
                         padding: 2px 4px;
                         border-radius: 3px;
                         color: #999;
-                        font-size: 1.2rem;
+                        font-size: .12rem;
                         &.color {
                             background-color: #80bd01;
                             color: #fff;
@@ -68,11 +103,11 @@
                     h3 {
                         color: #000;
                         flex: 1 1 auto;
-                        margin-left: 5px;
+                        margin-left: .05rem;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
-                        font-size: 1.6rem;
+                        font-size: .16rem;
                     }
                 }
                 .bottom {
@@ -80,9 +115,9 @@
                     align-items: center;
                     .author {
                         flex: 0 0 auto;
-                        width: 38px;
-                        height: 38px;
-                        margin-right: 15px;
+                        width: .38rem;
+                        height: .38rem;
+                        margin-right: .15rem;
                         border: 1px solid #ddd;
                         border-radius: 50%;
                         background-size: cover;
@@ -92,7 +127,7 @@
                         flex: 1 1 auto;
                         p {
                             display: flex;
-                            font-size: 1.2rem;
+                            font-size: .12rem;
                             color: #778087;
                             span {
                                 &:first-child {
@@ -109,41 +144,43 @@
             }
         }
     }
+
     .topic-title {
-        padding: 5px;
-        margin: 15px;
-        font-size: 1.8rem;
+        padding: .05prem;
+        margin: .15rem;
+        font-size: .18rem;
         color: #2c3e50;
         line-height: 1.5;
         background-color: #f0f0f0;
-        border-radius: 5px;
+        border-radius: 0.05rem;
     }
+
     .author-info {
         display: -webkit-flex;
         display: flex;
         align-items: center;
-        font-size: 1.2rem;
+        font-size: .12rem;
         color: #34495e;
-        padding: 0 15px;
+        padding: 0 .15rem;
         img.avatar {
-            width: 40px;
-            height: 40px;
+            width: .4rem;
+            height: .4rem;
             border-radius: 50%;
-            margin-right: 15px;
+            margin-right: .15rem;
         }
         .center {
             flex: 1;
             .author, .info {
                 display: block;
-                padding: 5px 0;
+                padding: .05rem 0;
             }
         }
         .right {
             .tag {
                 color: #999;
-                padding: 5px 6px;
-                font-size: 1.2rem;
-                border-radius: 4px;
+                padding: 0.05rem 0.06rem;
+                font-size: .12rem;
+                border-radius: 0.04rem;
                 text-align: center;
                 display: block;
                 background-color: #e5e5e5;
@@ -153,36 +190,38 @@
                 }
             }
             .name {
-                padding: 5px 0;
+                padding: .05rem 0;
                 display: block;
             }
         }
     }
+
     .topic-content {
-        padding: 15px;
-        margin-top: 15px;
+        padding: .15rem;
+        margin-top: .15rem;
         border-bottom: 1px solid #d4d4d4;
     }
+    
     .topic-reply {
         .topic-total {
-            padding: 15px;
+            padding: .15rem;
             border-bottom: 1px solid #d4d4d4;
             strong {
                 color: #42b983;
             }
         }
         .reply-list {
-            margin-top: 15px;
+            margin-top: .15rem;
             li {
-                padding: 15px;
+                padding: .15rem;
                 border-bottom: 1px solid #d4d4d4;
                 .user {
                     display: -webkit-flex;
                     display: flex;
                     .head {
-                        width: 45px;
-                        height: 45px;
-                        margin-right: 10px;
+                        width: .45rem;
+                        height: .45rem;
+                        margin-right: .1rem;
                         display: inline-block;
                     }
                     .info {
@@ -198,7 +237,7 @@
                             display: flex;
                             align-items: center;
                             .iconfont {
-                                font-size: 26px;
+                                font-size: 0.26rem;
                                 &.icon-dianzan.uped {
                                     color: #80bd01;
                                 }
@@ -207,7 +246,7 @@
                     }
                 }
                 .reply-content {
-                    margin-top: 15px;
+                    margin-top: .15rem;
                     img {
                         max-width: 100%;
                         border: 0;
@@ -221,35 +260,34 @@
         }
     }
     .reply {
-         margin: 0 15px;
+         margin: 0 .15rem;
          textarea {
              width: 100%;
              background-color: #fff;
-             font-size: 14px; //设置rem单位对textarea无效
-             padding: 15px;
+             font-size: .14rem; //设置rem单位对textarea无效
+             padding: .15rem;
              color: #313131;
              border: 1px solid #d5dbdb;
          }
          .btn-reply {
              border-bottom: 2px solid #3aa373;
              background-color: #4fc08d;
-             font-size: 1.6rem;
-             margin: 15px 0;
+             font-size: .16rem;
+             margin: .15rem 0;
              color: #fff;
-             padding: 10px;
+             padding: .1rem;
              width: 100%;
-             border-radius: 3px;
+             border-radius: .03rem;
          }
     }
 }
-
 </style>
 
 <script>
     import { mapState } from 'vuex'
     import nvHead from '../components/header'
-    //import nvTop from '../components/backtop'
-    //import nvLoad from '../components/loading'
+    import nvTop from '../components/backtop'
+    import nvLoad from '../components/loading'
     import {GET_TOPIC_LIST, UPDATE_TOPIC_LIST} from '../store/mutationTypes';
     import {topicTab} from '../store/topicTab'
     import {timeAgo} from '../utils/timeAgo';
@@ -350,8 +388,8 @@
         },
         components: {
             nvHead,
-         /*   nvTop,
-            nvLoad*/
+            nvTop,
+            nvLoad
         }
     }
 </script>
