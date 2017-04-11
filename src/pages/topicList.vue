@@ -36,7 +36,6 @@
         </div>
 
         <nv-top></nv-top>
-        <nv-load v-show="showLoad"></nv-load>
     </div>
     
 </template>
@@ -201,7 +200,7 @@
         margin-top: .15rem;
         border-bottom: 1px solid #d4d4d4;
     }
-    
+
     .topic-reply {
         .topic-total {
             padding: .15rem;

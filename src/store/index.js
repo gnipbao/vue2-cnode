@@ -79,6 +79,7 @@ const store = new Vuex.Store({
 			return topicList(data).then((res) => {
 				if (res.success) {
 					commit(TOOGLE_LOAD, false);
+					console.log(res);
 					commit(GET_TOPIC_LIST, res.data);
 				}
 			})
