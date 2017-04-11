@@ -18,17 +18,17 @@
                 </router-link>
             </div>
         </header>
-        <nv-menu :show-menu="show"
+       <!--  <nv-menu :show-menu="show"
             :page-type="pageType"
             :nick-name="nickname"
             :profile-url="profileimgurl"
-            v-if="fixHead" ></nv-menu>
+            v-if="fixHead" ></nv-menu> -->
     </div>
 </template>
 
 <script>
     import $ from 'webpack-zepto'
-    import nvMenu from './menu.vue'
+    //import nvMenu from './menu.vue'
     export default {
         replace: true,
         props: {
@@ -58,7 +58,7 @@
             }
         },
         components: {
-            nvMenu
+            //nvMenu
         }
     };
 </script>
