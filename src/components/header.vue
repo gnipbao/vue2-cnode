@@ -16,7 +16,7 @@
                 <i class="iconfont icon-publish green"></i>
             </router-link>
         </header>
-        <!-- <nv-menu :show="show"></nv-menu> -->
+        <nv-menu :show="show"></nv-menu>
     </div>
 </template>
 
@@ -81,7 +81,7 @@
 </style>
 
 <script>
-    //import nvMenu from './menu.vue'
+    import nvMenu from './menu.vue'
     export default {
         data() {
             return {
@@ -100,7 +100,7 @@
             }
         },
         components: {
-            //nvMenu
+            nvMenu
         }
     }
 </script>

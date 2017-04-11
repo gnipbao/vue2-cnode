@@ -1,60 +1,86 @@
 <template>
-    <section id="sideBar" class="nav-list" :class="{'show':showMenu}">
+    <nav class="menu-bar" :class="{'show': show}">
         <user-info></user-info>
-        <section class="list-ul">
-            <router-link class="icon-quanbu iconfont item" :to="{'name':'list',query:{tab:'all'}}">全部</router-link>
-            <router-link class="icon-hao iconfont item" :to="{'name':'list',query:{tab:'good'}}">精华</router-link>
-            <router-link class="icon-fenxiang iconfont item" :to="{'name':'list',query:{tab:'share'}}">分享</router-link>
-            <router-link class="icon-wenda iconfont item" :to="{'name':'list',query:{tab:'ask'}}">问答</router-link>
-            <router-link class="icon-zhaopin iconfont item" :to="{'name':'list',query:{tab:'job'}}">招聘</router-link>
-            <router-link class="icon-xiaoxi iconfont item line" :to="{'name':'message'}">消息</router-link>
-            <router-link class="icon-about iconfont item" :to="{'name':'about'}">关于</router-link>
-        </section>
-    </section>
+        <ul class="menu-list">
+            <li class="menu-item">
+                <router-link class="" :to="{name: 'list', query: {tab: 'all'}}"><i class="iconfont icon-quanbu"></i>全部</router-link>
+            </li>
+            <li class="menu-item">
+                <router-link :to="{name: 'list', query: {tab: 'good'}}"><i class="iconfont icon-jinghua"></i>精华</router-link>
+            </li>
+            <li class="menu-item">
+                <router-link :to="{name: 'list', query: {tab: 'share'}}"><i class="iconfont icon-share"></i>分享</router-link>
+            </li>
+            <li class="menu-item">
+                <router-link :to="{name: 'list', query: {tab: 'ask'}}"><i class="iconfont icon-wenda"></i>问答</router-link>
+            </li>
+            <li class="menu-item">
+                <router-link :to="{name: 'list', query: {tab: 'job'}}"><i class="iconfont icon-zhaopin"></i>招聘</router-link>
+            </li>
+            <li class="menu-item">
+                <router-link :to="{name: 'message'}" style="position: relative">
+                    <i class="iconfont icon-xiaoxi"></i>消息
+                    <span class="message-count" v-text="`+${messageCount}`" v-if="messageCount"></span>
+                </router-link>
+            </li>
+            <li class="menu-item">
+                <router-link :to="{name: 'about'}"><i class="iconfont icon-guanyu"></i>关于</router-link>
+            </li>
+        </ul>
+    </nav>
 </template>
+
 <style lang="scss">
-    /*侧边栏*/
-    .nav-list {
+
+    .message-count {
+        position: absolute;
+        color: red;
+        left: .4rem;
+        top: .15rem;
+    }
+
+    nav.menu-bar {
         position: fixed;
-        top: 0;
+        top: .4rem;
         bottom: 0;
-        left: -200px;
-        width: 200px;
-        background-color: #fff;
+        left: -2rem;
+        width: 2rem;
         color: #313131;
+        background-color: #fff;
         transition: all .3s ease;
-        z-index: 99;
+        z-index: 10;
         &.show {
-            transform: translateX(200px);
+            transform: translateX(2rem);
         }
-    }
-    /*侧边栏列表*/
-    .list-ul {
-        margin: 0 24px;
-        border-top: 1px solid #d4d4d4;
-        overflow: hidden;
-        padding-top: 9%;
-        .item {
-            display: block;
-            font-size: 14px;
-            font-weight: 200;
-            padding: 9% 0;
-            text-align: left;
-            text-indent: 1px;
-            line-height: 15px;
-            color: #313131;
-            font-weight: 700;
-            &:last-child {
-                margin-bottom: 50px;
-            }
-            &:before {
-                color: #2c3e50;
-            }
-        }
-        .line {
+
+        .menu-list {
             border-top: 1px solid #d4d4d4;
+            padding-top: .18rem;
+
+            li.menu-item {
+                height: .47rem;
+                &:hover {
+                    background-color: #f5f5f5;
+                }
+                a {
+                    display: block;
+                    padding: .14rem .24rem;
+                    font-size: .14rem;
+                    color: #313131;
+                    font-weight: 700;
+                    height:.47rem;
+                    .iconfont {
+                        display: inline-block;
+                        margin-right: .3rem;
+                    }
+                }
+                &:nth-of-type(6) { //消息
+                    border-top: 1px solid #d4d4d4;
+                }
+            }
         }
     }
+
 </style>
 
 <script>
@@ -88,11 +114,11 @@
        },
 
        computed: {
-            ...mapState(['userInfo'])
+             ...mapState(['userInfo'])
        },
 
        components: {
-            UserInfo
+            userInfo
        }
     }
 </script>
