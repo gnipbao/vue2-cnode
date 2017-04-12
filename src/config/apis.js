@@ -1,3 +1,7 @@
+/*
+ * api interface config
+ * use axios
+ */
 import {
 	baseUrl
 } from './env'

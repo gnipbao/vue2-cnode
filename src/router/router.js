@@ -1,5 +1,5 @@
 import App from '../App'
-
+//懒加载路由 详细：https://router.vuejs.org/zh-cn/advanced/lazy-loading.html
 const TopicList = r => require.ensure([], () => r(require('../pages/topicList')), 'TopicList')
 const About = r => require.ensure([], () => r(require('../pages/about')), 'About')
 const Login = r => require.ensure([], () => r(require('../pages/login')), 'Login')
@@ -34,7 +34,7 @@ export default [{
                 requiresAuth: true
             }
         }, {
-            path: '/login', 
+            path: '/login',
             name: 'login',
             component: Login
         }, {
@@ -44,7 +44,10 @@ export default [{
         }, {
             path: '/message',
             name: 'message',
-            component: Message
+            component: Message,
+            meta: {
+                requiresAuth: true
+            }
         }, {
             path: '/about',
             name: 'about',
