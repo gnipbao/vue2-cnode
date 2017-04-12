@@ -361,7 +361,11 @@
         },
         beforeRouteEnter(to, from, next) {
             store.state.topicInfo = {};
-            next();
+            next(vm=>{
+            	console.log('xxxxxxxxxxxx')
+            	console.log(vm)
+            });
+
         },
         computed: {
             ...mapState(['topicInfo', 'userInfo', 'showLoad'])
