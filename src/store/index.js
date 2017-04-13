@@ -6,13 +6,15 @@ import {
 	login,
 	reply,
 	messages,
-	upReply
+	upReply,
+	getUserInfo,
 } from '../config/apis' //apis
 
 import {
 	GET_TOPIC_LIST,
 	UPDATE_TOPIC_LIST,
 	GET_TOPIC_INFO,
+	GET_USER_INFO,
 	LOGIN,
 	LOGIN_OUT,
 	REPLY,
@@ -43,6 +45,10 @@ const store = new Vuex.Store({
 
 		[GET_TOPIC_INFO](state, data) {
 			state.topicInfo = data;
+		},
+
+		[GET_USER_INFO](state, data) {
+			state.userInfo = data;
 		},
 
 		[LOGIN](state, data) {
@@ -108,6 +114,17 @@ const store = new Vuex.Store({
 				if (ret.success) {
 					commit(TOOGLE_LOAD, false);
 					commit(GET_TOPIC_INFO, ret.data)
+				}
+			})
+		},
+
+		[GET_USER_INFO]({
+			commit
+		}, data) {
+			getUserInfo(data).then((res) => {
+				var ret = res.data;
+				if (ret.success) {
+					commit(GET_USER_INFO, ret.data)
 				}
 			})
 		},
