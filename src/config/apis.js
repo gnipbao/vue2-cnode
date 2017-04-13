@@ -11,7 +11,7 @@ console.log(baseUrl);
 export const topicList = (data) => {
 	return axios({
 		url: baseUrl + 'topics',
-		data: data
+		params: data
 	})
 }
 

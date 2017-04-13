@@ -1,3 +1,6 @@
+//require('es6-promise').polyfill();可以使用这个两个库自己封装
+//require('isomorphic-fetch');
+
 import {
 	baseUrl
 } from './env'
@@ -35,7 +38,7 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
 				value: JSON.stringify(data)
 			})
 		}
-		
+
 		try {
 			var response = await fetch(url, requestConfig);
 			var responseJson = await response.json();

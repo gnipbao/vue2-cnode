@@ -59,7 +59,7 @@
                 this.$router.push({name: 'list'});
             }
         },
-        computed: {
+        computed: {//计算属性中直接获取state
             ...mapState(['userInfo']),
         },
     }
