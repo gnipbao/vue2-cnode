@@ -17,12 +17,14 @@
             <li class="menu-item">
                 <router-link :to="{name: 'list', query: {tab: 'job'}}"><i class="iconfont icon-zhaopin"></i>招聘</router-link>
             </li>
+
             <li class="menu-item">
                 <router-link :to="{name: 'message'}" style="position: relative">
                     <i class="iconfont icon-xiaoxi"></i>消息
                     <span class="message-count" v-text="`+${messageCount}`" v-if="messageCount"></span>
                 </router-link>
             </li>
+
             <li class="menu-item">
                 <router-link :to="{name: 'about'}"><i class="iconfont icon-guanyu"></i>关于</router-link>
             </li>

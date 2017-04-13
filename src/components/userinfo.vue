@@ -16,6 +16,8 @@
 </template>
 
 <style lang="scss">
+.user-info{
+    font-size: .2rem;
     .login-no a {
         font-size: .2rem;
         font-weight: 700;
@@ -42,11 +44,26 @@
         }
         .login-name {
             flex: 1;
+            font-size: .14rem;
         }
         .login-out {
-            color: #337ab7;
+            font-size: 0.1rem;
+            font-weight: 500;
+            text-align: center;
+             cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            line-height: 1.5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background-color: #f04134;
+            border-color: #f04134;
+            color: #f0f0f0;
         }
     }
+}
+    
 </style>
 
 <script>
