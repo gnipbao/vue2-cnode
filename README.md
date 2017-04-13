@@ -1,6 +1,6 @@
 # vue2-cnode
 
-> vue2 webpack sass vuex vue-loader axios cnode
+> vue2 webpack sass vuex vue-router axios
 
 ## Build Setup
 
