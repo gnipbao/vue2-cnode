@@ -26,7 +26,10 @@
             </li>
 
             <li class="menu-item">
-                <router-link :to="{name: 'about'}"><i class="iconfont icon-guanyu"></i>关于</router-link>
+                <router-link :to="{path: '/user/'+userInfo.loginname}"><i class="iconfont icon-denglu"></i>设置</router-link>
+            </li>
+            <li class="menu-item">
+                <router-link :to="{name: 'message'}"><i class="iconfont icon-guanyu"></i>关于</router-link>
             </li>
         </ul>
     </nav>

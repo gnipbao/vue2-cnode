@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>user</h2>
+      <h2>{{userInfo.loginname}}</h2>
     </div>
 </template>
 
@@ -9,11 +9,17 @@
 </style>
 
 <script>
+    import {mapState} from 'vuex'
+
     export default {
         data() {
             return {
               
             }
+        },
+        
+        computed:{
+        	...mapState(['userInfo'])
         }
         
     }
