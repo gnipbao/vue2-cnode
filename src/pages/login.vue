@@ -46,7 +46,7 @@
     export default {
         data() {
             return {
-              token:''
+              token:'f12898dc-7eec-42fc-bbfd-258a5bae91fb'
             }
         },
         methods:{
@@ -56,7 +56,6 @@
         		}
         		//提交 跳转
         		this.$store.dispatch(LOGIN,data).then(()=>{
-        			  debugger;
                 const redirect = decodeURIComponent(this.$route.query.redirect||'list');
                 this.$router.push({name: redirect});
         		})

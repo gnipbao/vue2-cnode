@@ -24,10 +24,11 @@
                     <span class="message-count" v-text="`+${messageCount}`" v-if="messageCount"></span>
                 </router-link>
             </li>
-
-            <li class="menu-item">
+            
+            <li class="menu-item" v-if="userInfo.loginname">
                 <router-link :to="{path: '/user/'+userInfo.loginname}"><i class="iconfont icon-denglu"></i>设置</router-link>
             </li>
+
             <li class="menu-item">
                 <router-link :to="{name: 'message'}"><i class="iconfont icon-guanyu"></i>关于</router-link>
             </li>
@@ -63,7 +64,7 @@
             padding-top: .18rem;
 
             li.menu-item {
-                height: .47rem;
+                height: .6rem;
                 &:hover {
                     background-color: #f5f5f5;
                 }
@@ -73,7 +74,7 @@
                     font-size: .14rem;
                     color: #313131;
                     font-weight: 700;
-                    height:.47rem;
+                    height:.6rem;
                     .iconfont {
                         display: inline-block;
                         margin-right: .3rem;

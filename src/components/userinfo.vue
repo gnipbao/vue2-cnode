@@ -7,11 +7,14 @@
             </router-link>
         </div>
         <!-- 已登录 -->
-        <div v-else class="login-yes">
-            <img v-if="userInfo.avatar_url" :src="userInfo.avatar_url">
-            <span class="login-name" v-text="userInfo.loginname"></span>
-            <span class="login-out" @click="handleLoginOut">退出</span>
+        <div v-else>
+           <div class="login-yes">
+               <img v-if="userInfo.avatar_url" :src="userInfo.avatar_url">
+               <span class="login-name" v-text="userInfo.loginname"></span>
+           </div>
+           <div class="login-out" @click="handleLoginOut">退出</div> 
         </div>
+        
     </div>
 </template>
 
@@ -46,21 +49,28 @@
             flex: 1;
             font-size: .14rem;
         }
-        .login-out {
-            font-size: 0.1rem;
-            font-weight: 500;
-            text-align: center;
-             cursor: pointer;
-            background-image: none;
-            border: 1px solid transparent;
-            white-space: nowrap;
-            line-height: 1.5;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background-color: #f04134;
-            border-color: #f04134;
-            color: #f0f0f0;
-        }
+
+    }
+    .login-out {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: .15rem;
+        font-size: 0.1rem;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        line-height: 1.5;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background-color: #f04134;
+        border-color: #f04134;
+        color: #f0f0f0;
     }
 }
     
