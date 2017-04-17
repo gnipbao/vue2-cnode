@@ -196,6 +196,7 @@
         padding: .15rem;
         margin-top: .15rem;
         border-bottom: 1px solid #d4d4d4;
+        font-size: .2rem;
     }
     .topic-reply {
     		font-size: 0.17rem;
@@ -286,7 +287,8 @@
 		import nvTop from '../components/backtop'
 		import nvLoad from '../components/loading'
 		import nvReply from '../components/reply'
-		import {GET_TOPIC_INFO, UP_REPLY} from '../store/mutationTypes'
+		import {GET_TOPIC_INFO} from '../store/mutationTypes'
+        import {upReply} from '../config/apis'
 		import {timeAgo} from '../utils/timeAgo'
 		import {topicTab} from '../store/topicTab'
 		import store from '../store/'
@@ -324,6 +326,7 @@
                         query: { redirect: encodeURIComponent(this.$route.name) }
                     });
                 }
+                
                 this.replyId = id;
             },
             handleReply() {
@@ -332,7 +335,8 @@
             isUps(ups) {
                 return ups.indexOf(this.userInfo.id) > -1
             },
-            handleUpReply(item) {
+            handleUpReply(item) {//点赞
+                //条件校验
                 if (!this.userInfo.loginname) {
                     this.$router.push({
                         name: 'login',
@@ -340,9 +344,11 @@
                     });
                     return;
                 }
+
                 upReply({accesstoken: this.userInfo.accesstoken}, item.id).then((res) => {
-                    if (res.success) {
-                        if (res.action === 'down') {
+                    var ret = res.data;
+                    if (ret.success) {
+                        if (ret.action === 'down') {
                             const index = item.ups.indexOf(this.userInfo.id);
                             if (index > -1) {
                                 item.ups.splice(index, 1);

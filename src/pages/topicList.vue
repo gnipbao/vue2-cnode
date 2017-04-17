@@ -6,13 +6,11 @@
                 <li v-for="item of topics">
                     <router-link key="item.id" :to="{name: 'topic', params:{id:item.id}}">
                         <div class="top">
-                            <span class="normal" :class="{color: item.good || item.top}"
-                                v-text="getTabInfo(item)"></span>
+                            <span class="normal" :class="{color: item.good || item.top}" v-text="getTabInfo(item)"></span>
                             <h3 v-text="item.title" :title="item.title"></h3>
                         </div>
                         <div class="bottom">
-                            <span class="author"
-                                v-bind:style="{ backgroundImage: `url(${item.author.avatar_url})`}"></span>
+                            <span class="author" v-bind:style="{ backgroundImage: `url(${item.author.avatar_url})`}"></span>
                             <div class="info">
                                 <p>
                                     <span v-text="item.author.loginname"></span>
@@ -28,52 +26,48 @@
                 </li>
             </ul>
         </section>
-
         <div v-show="showListLoad">
             <div class="loading">
                 <i class="iconfont icon-loading"></i>
             </div>
         </div>
-
         <nv-top></nv-top>
     </div>
-    
 </template>
-
 <style lang="scss">
-    .loading {
-        width: 1.2rem;
-        /*height: 120px;*/
-        margin: 0.05px auto;
-        text-align: center;
-        .icon-loading {
-            color: #ccc;
-            display: inline-block;
-            font-size: .5rem;
-            -webkit-animation: gif 1s infinite linear;
-            animation: gif 1s infinite linear;
+.loading {
+    width: 1.2rem;
+    /*height: 120px;*/
+    margin: 0.05px auto;
+    text-align: center;
+    .icon-loading {
+        color: #ccc;
+        display: inline-block;
+        font-size: .5rem;
+        -webkit-animation: gif 1s infinite linear;
+        animation: gif 1s infinite linear;
+    }
+    @keyframes gif {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
         }
-        @keyframes gif {
-            0% {
-                -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
         }
-        @-webkit-keyframes gif {
-            0% {
-                -webkit-transform: rotate(0deg);
-            }
-            100% {
-                -webkit-transform: rotate(360deg);
-            }
+    }
+    @-webkit-keyframes gif {
+        0% {
+            -webkit-transform: rotate(0deg);
         }
-    }    
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+}
 
-  .topic {
+.topic {
     padding-top: .4rem;
     .topic-list {
         li {
@@ -135,7 +129,6 @@
                                 &:last-child {
                                     flex: 0 0 auto;
                                 }
-
                             }
                         }
                     }
@@ -143,7 +136,6 @@
             }
         }
     }
-
     .topic-title {
         padding: .05prem;
         margin: .15rem;
@@ -153,7 +145,6 @@
         background-color: #f0f0f0;
         border-radius: 0.05rem;
     }
-
     .author-info {
         display: -webkit-flex;
         display: flex;
@@ -169,7 +160,8 @@
         }
         .center {
             flex: 1;
-            .author, .info {
+            .author,
+            .info {
                 display: block;
                 padding: .05rem 0;
             }
@@ -194,13 +186,11 @@
             }
         }
     }
-
     .topic-content {
         padding: .15rem;
         margin-top: .15rem;
         border-bottom: 1px solid #d4d4d4;
     }
-
     .topic-reply {
         .topic-total {
             padding: .15rem;
@@ -253,46 +243,54 @@
                     }
                 }
                 &:last-child {
-                    border-bottom:none;
+                    border-bottom: none;
                 }
             }
         }
     }
     .reply {
-         margin: 0 .15rem;
-         textarea {
-             width: 100%;
-             background-color: #fff;
-             font-size: .14rem; //设置rem单位对textarea无效
-             padding: .15rem;
-             color: #313131;
-             border: 1px solid #d5dbdb;
-         }
-         .btn-reply {
-             border-bottom: 2px solid #3aa373;
-             background-color: #4fc08d;
-             font-size: .16rem;
-             margin: .15rem 0;
-             color: #fff;
-             padding: .1rem;
-             width: 100%;
-             border-radius: .03rem;
-         }
+        margin: 0 .15rem;
+        textarea {
+            width: 100%;
+            background-color: #fff;
+            font-size: .14rem; //设置rem单位对textarea无效
+            padding: .15rem;
+            color: #313131;
+            border: 1px solid #d5dbdb;
+        }
+        .btn-reply {
+            border-bottom: 2px solid #3aa373;
+            background-color: #4fc08d;
+            font-size: .16rem;
+            margin: .15rem 0;
+            color: #fff;
+            padding: .1rem;
+            width: 100%;
+            border-radius: .03rem;
+        }
     }
 }
 </style>
-
 <script>
-    import { mapState } from 'vuex'
-    import nvHead from '../components/header'
-    import nvTop from '../components/backtop'
-    import nvLoad from '../components/loading'
-    import {GET_TOPIC_LIST, UPDATE_TOPIC_LIST} from '../store/mutationTypes';
-    import {topicTab} from '../store/topicTab'
-    import {timeAgo} from '../utils/timeAgo';
+import {
+    mapState
+} from 'vuex'
+import nvHead from '../components/header'
+import nvTop from '../components/backtop'
+import nvLoad from '../components/loading'
+import {
+    GET_TOPIC_LIST,
+    UPDATE_TOPIC_LIST
+} from '../store/mutationTypes';
+import {
+    topicTab
+} from '../store/topicTab'
+import {
+    timeAgo
+} from '../utils/timeAgo';
 
-    export default {
-        data() {
+export default {
+    data() {
             return {
                 searchOption: {
                     page: 1,
@@ -390,5 +388,5 @@
             nvTop,
             nvLoad
         }
-    }
+}
 </script>
