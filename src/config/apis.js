@@ -38,14 +38,16 @@ export const reply = (data, id) => {
 export const messageCount = (data) => {
 	return axios({
 		url: baseUrl + '/message/count',
-		data: data
+		method: 'get',
+		params: data
 	})
 }
 
 export const messages = (data) => {
 	return axios({
 		url: baseUrl + 'messages',
-		data: data
+		method: 'get',
+		params: data
 	})
 }
 

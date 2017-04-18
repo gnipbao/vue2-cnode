@@ -30,11 +30,54 @@
             </li>
 
             <li class="menu-item">
-                <router-link :to="{name: 'message'}"><i class="iconfont icon-guanyu"></i>关于</router-link>
+                <router-link :to="{name: 'about'}"><i class="iconfont icon-guanyu"></i>关于</router-link>
             </li>
         </ul>
     </nav>
 </template>
+
+
+
+<script>
+    import {mapState} from 'vuex';
+    import userInfo from './userinfo'
+    import { messageCount } from '../config/apis';
+    export default {
+       data() {
+            return {
+                messageCount: 0
+            }
+       },
+       mounted() {
+            this.getMessageCount();
+       },
+
+       methods: {
+            getMessageCount() {
+                  if (this.userInfo.loginname) {
+                    messageCount({accesstoken: this.userInfo.accesstoken}).then((res) => {
+                        let ret = res.data;
+                        if (ret.success) {
+                            this.messageCount = ret.data;
+                        }
+                    })
+                }
+            }
+       },
+
+       props: {
+            show: Boolean
+       },
+
+       computed: {
+             ...mapState(['userInfo'])
+       },
+
+       components: {
+            userInfo
+       }
+    }
+</script>
 
 <style lang="scss">
 
@@ -88,43 +131,3 @@
     }
 
 </style>
-
-<script>
-    import {mapState} from 'vuex';
-    import userInfo from './userinfo'
-    import { messageCount } from '../config/apis';
-    export default {
-       data() {
-            return {
-                messageCount: 0
-            }
-       },
-       mouted() {
-            this.getMessageCount();
-       },
-
-       methods: {
-            getMessageCount() {
-                  if (this.userInfo.loginname) {
-                    messageCount({accesstoken: this.userInfo.accesstoken}).then((res) => {
-                        if (res.success) {
-                            this.messageCount = res.data;
-                        }
-                    })
-                }
-            }
-       },
-
-       props: {
-            show: Boolean
-       },
-
-       computed: {
-             ...mapState(['userInfo'])
-       },
-
-       components: {
-            userInfo
-       }
-    }
-</script>
