@@ -18,25 +18,42 @@ export default {
                 content: ''
             }
         },
-        props: ['replyId','replyTo', 'topicId','focus'],
+        props: ['replyId', 'replyTo', 'topicId', 'focus'],
         mouted() {
-
+            this.repleyTo && (this.content = `@${this.replyTo}`);
         },
 
         methods: {
-        	handleReply(){
-        		
-        	}
+            handleReply() {
+                const data = {
+                    accesstoken: this.userInfo.accesstoken,
+                    content: this.content + '\n\n[内容来自->vue2-cnode](https://github.com/gnipbao/vue2-cnode)',
+                    reply_id: this.replyId,
+                    topicId: this.topicId
+                }
+                this.$store.dispatch(REPLY, data).then(() => {
+                    this.content = '';
+                    this.$emit('onReply');
+                })
+            }
 
         },
 
         computed: {
+            ...mapState(['userInfo'])
+        },
 
+        //自定义指令 官方文档 https://cn.vuejs.org/v2/guide/custom-directive.html
+        directives: {
+            focus: {
+                inserted(el, binding) {
+                    // 聚焦元素
+                    binding.value&&el.focus()
+                }
+            }
         }
 
 }
 </script>
-
 <style lang="scss">
-
 </style>

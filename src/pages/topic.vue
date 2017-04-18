@@ -356,7 +356,8 @@
                         } else {
                             item.ups.push(this.userInfo.id);
                         }
-                    }
+                    } 
+
                 })
             }
         },
