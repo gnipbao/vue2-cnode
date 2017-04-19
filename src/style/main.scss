@@ -11,7 +11,7 @@
     display: -webkit-flex;
     display: flex;
     border-bottom: 1px solid #d4d4d4;
-    height: .42rem;
+    height: .5rem;
     .tab-item {
         flex: 1;
         border-right: 1px solid #d4d4d4;
@@ -19,7 +19,7 @@
         font-weight: 700;
         font-size: .16rem;
         padding: .10rem 0;
-        height: .42rem;
+        height: .5rem;
         &.active {
             color: #ff5a5f;
             border-bottom: 2px solid #ff5a5f;

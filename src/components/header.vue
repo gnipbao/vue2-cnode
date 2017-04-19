@@ -29,7 +29,7 @@
 }
 .page-cover {
     position: fixed;
-    top: 0.4rem;
+    top: 0.6rem;
     left: 0;
     right: 0;
     bottom: 0;
@@ -42,7 +42,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 0.4rem;
+    height: 0.6rem;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
     z-index: 6;
     background-color: rgba(255, 255, 255, 0.95);
@@ -51,9 +51,9 @@
     display: flex;
     align-items: center;
     .menu-btn {
-        @include wh(0.44rem, 0.4rem);
+        @include wh(0.6rem, 0.6rem);
         background: url("../assets/menu.png") center center no-repeat;
-        background-size: .24rem;
+        background-size: .4rem;
     }
     .info {
         flex: 1;
@@ -64,17 +64,17 @@
         justify-content: center;
         font-size: .15rem;
         .vue-logo {
-            width: .4rem;
-            height: .4rem;
+            width: .5rem;
+            height: .5rem;
             background: url("../assets/logo.png") center center no-repeat;
-            background-size: 0.24rem;
+            background-size: 0.3rem;
         }
     }
     a.publish-btn {
         color: #42b983;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 15px;
+        height: .6rem;
+        line-height: .6rem;
+        padding: 0 .15rem;
         display: block;
     }
 }

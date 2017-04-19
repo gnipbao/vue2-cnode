@@ -18,7 +18,7 @@
 
 <style lang="scss">
   .user-home{
-    padding-top: .4rem;
+    padding-top: .6rem;
     .info{
         padding-top: .2rem;
         text-align: center;

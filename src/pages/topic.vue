@@ -74,7 +74,7 @@
 
 <style lang="scss">
  .topic {
-    padding-top: .4rem;
+    padding-top: .6rem;
     .topic-list {
         li {
             border-bottom: 1px solid #f0f0f0;

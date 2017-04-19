@@ -127,7 +127,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .message {
-    padding-top: .4rem;
+    padding-top: .6rem;
     .message-content {
         padding: .1rem 0;
         border-bottom: 1px solid #d4d4d4;

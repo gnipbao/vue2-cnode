@@ -37,8 +37,7 @@
 <style lang="scss">
 .loading {
     width: 1.2rem;
-    /*height: 120px;*/
-    margin: 0.05px auto;
+    margin: 0.05rem auto;
     text-align: center;
     .icon-loading {
         color: #ccc;
@@ -68,18 +67,18 @@
 }
 
 .topic {
-    padding-top: .4rem;
+    padding-top: .6rem;
     .topic-list {
         li {
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #e3e3e3;
             &:hover {
                 background-color: #f5f5f5;
             }
             a {
-                padding: .10rem .15rem;
+                padding: .15rem .2rem;
                 display: block;
                 .top {
-                    padding: .05rem 0;
+                    padding: .1rem 0;
                     display: flex;
                     span.normal {
                         flex: 0 0 auto; //TODO:soulcm 为什么最后一个值flex-basis默认不是auto,还得自己设置
@@ -108,19 +107,18 @@
                     align-items: center;
                     .author {
                         flex: 0 0 auto;
-                        width: .38rem;
-                        height: .38rem;
+                        width: .4rem;
+                        height: .4rem;
                         margin-right: .15rem;
                         border: 1px solid #ddd;
                         border-radius: 50%;
                         background-size: cover;
-                        // background-image: url("https://avatars.githubusercontent.com/u/8791709?v=3&s=120");
                     }
                     .info {
                         flex: 1 1 auto;
                         p {
                             display: flex;
-                            font-size: .12rem;
+                            font-size: .15rem;
                             color: #778087;
                             span {
                                 &:first-child {

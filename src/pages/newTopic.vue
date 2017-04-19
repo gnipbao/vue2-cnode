@@ -81,7 +81,7 @@ export default {
 </script>
 <style lang="scss">
 .topic-create {
-    padding-top: .6rem;
+    padding-top: .7rem;
     font-size: 0.3rem;
     .category {
         border-bottom: 1px solid #d4d4d4;
