@@ -2,12 +2,12 @@
 
 > 学习使用vue2 搭建移动版cnode 基于官方vue-cli生成 接口由cnodejs.org官方提供 https://cnodejs.org/api
 
-## 技术栈
+### 技术栈
 
 + vue2 + webpack + vuex + sass + vue-router + axios
 + 布局采用阿里团队的[高清方案](http://www.jianshu.com/p/985d26b40199)
 
-## Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
@@ -20,7 +20,7 @@ npm run dev
 npm run build
 ```
 
-## 目录结构
+### 目录结构
 ```
 .
 |-- build                           // vue-cli构建目录                       
@@ -71,3 +71,6 @@ npm run build
 |-- README.md                        // 项目说明
 |-- package.json                     // 配置项目相关信息，通过执行 npm init 命令创建
 ```
+### 在线效果
+
+![preview](https://cloud.githubusercontent.com/assets/16514704/25163967/7c193fe0-2500-11e7-84c3-ded87c48bf52.png)
