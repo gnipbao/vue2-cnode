@@ -36,7 +36,7 @@
         </h3>
 
         <ul class="reply-list">
-          <li v-for="item in topicInfo.replies">
+          <li v-for="item in topicInfo.replies" :key="item.id">
             <section class="user">
               <router-link
                 :to="{

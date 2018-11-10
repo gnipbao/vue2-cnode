@@ -3,7 +3,7 @@
     <nv-head ref="head" :title="pageTitle"></nv-head>
     <section class="topic">
       <ul class="topic-list">
-        <li v-for="item of topics">
+        <li v-for="item of topics" :key="item.id">
           <router-link
             key="item.id"
             :to="{ name: 'topic', params: { id: item.id } }"
