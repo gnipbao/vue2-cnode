@@ -13,10 +13,10 @@
   },
   "lint-staged": {
     "src/**/*.{js,json,css,vue}": [
-     "prettier --write",
-     "git add"
+      "prettier --write",
+      "git add"
     ]
-   },
+  },
   "dependencies": {
     "axios": "^0.16.1",
     "github-markdown-css": "^2.6.0",
@@ -38,8 +38,12 @@
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.4",
+    "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
     "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-vue": "^4.7.1",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0",

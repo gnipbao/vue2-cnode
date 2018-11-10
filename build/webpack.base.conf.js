@@ -6,6 +6,19 @@ var vueLoaderConfig = require('./vue-loader.conf')
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
+// auto eslint
+const createLintingRule = () => ({
+  test: /\.(js|vue)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  exclude: /node_modules/,
+  include: [resolve('src'), resolve('test')],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay,
+    fix: true,
+  }
+})
 
 module.exports = {
   entry: {
@@ -33,7 +46,9 @@ module.exports = {
       test: /\.js$/,
       loader: 'babel-loader',
       include: [resolve('src'), resolve('test')]
-    }, {
+    },
+    createLintingRule()
+    , {
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       loader: 'url-loader',
       options: {
