@@ -1,25 +1,22 @@
-
 <template>
-    <div>
-        <nv-head></nv-head>
-        <router-view></router-view>
-    </div>
+  <div>
+    <nv-head></nv-head>
+    <router-view></router-view>
+  </div>
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
 
 <script>
-    import nvHead from '../components/header';
-    export default {
-        data() {
-            return {
-                show: false
-            }
-        },
-        components: {
-            nvHead
-        }
+import nvHead from '../components/header';
+export default {
+  data() {
+    return {
+      show: false,
     };
+  },
+  components: {
+    nvHead,
+  },
+};
 </script>

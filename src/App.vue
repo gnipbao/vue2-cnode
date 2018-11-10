@@ -1,14 +1,11 @@
 <template>
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
-	@import './style/main'
-	
+@import './style/main';
 </style>
 
 <script>
-  export default {
-        
-  }
+export default {};
 </script>

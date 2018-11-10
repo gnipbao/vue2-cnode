@@ -1,20 +1,13 @@
 <template>
-    <div>
-      <h2>about</h2>
-    </div>
+  <div><h2>about</h2></div>
 </template>
 
-<style lang="scss" scoped>
- 
-</style>
+<style lang="scss" scoped></style>
 
 <script>
-    export default {
-        data() {
-            return {
-              
-            }
-        }
-        
-    }
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
