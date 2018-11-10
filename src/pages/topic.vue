@@ -1,8 +1,8 @@
 <template>
   <div>
-    <nv-head></nv-head>
+    <nv-head />
     <div class="topic" v-if="topicInfo.title">
-      <h2 class="topic-title" v-text="topicInfo.title"></h2>
+      <h2 class="topic-title" v-text="topicInfo.title" />
 
       <section class="author-info">
         <router-link
@@ -15,7 +15,7 @@
         </router-link>
 
         <div class="center">
-          <span class="author" v-text="topicInfo.author.loginname"></span>
+          <span class="author" v-text="topicInfo.author.loginname" />
           <time class="info"> 发布于:{{ topicInfo.create_at | timeAgo }} </time>
         </div>
         <div class="right">
@@ -23,15 +23,12 @@
             class="tag"
             v-text="getTabInfo(topicInfo)"
             :class="{ color: topicInfo.good || topicInfo.top }"
-          ></span>
+          />
           <span class="name">{{ topicInfo.visit_count }}次浏览</span>
         </div>
       </section>
 
-      <section
-        class="markdown-body topic-content"
-        v-html="topicInfo.content"
-      ></section>
+      <section class="markdown-body topic-content" v-html="topicInfo.content" />
 
       <section class="topic-reply">
         <h3 class="topic-total">
@@ -51,7 +48,7 @@
               </router-link>
               <div class="info">
                 <span class="left">
-                  <span class="name" v-text="item.author.loginname"></span>
+                  <span class="name" v-text="item.author.loginname" />
                   <span class="name">
                     发布于:{{ item.create_at | timeAgo }}
                   </span>
@@ -62,19 +59,13 @@
                     class="iconfont icon-dianzan"
                     :class="{ uped: isUps(item.ups) }"
                     @click="handleUpReply(item);"
-                  ></span>
+                  />
                   <span style="margin-right: 5px">{{ item.ups.length }}</span>
-                  <span
-                    class="iconfont icon-hf"
-                    @click="addReply(item.id);"
-                  ></span>
+                  <span class="iconfont icon-hf" @click="addReply(item.id);" />
                 </span>
               </div>
             </section>
-            <div
-              class="reply-content markdown-body"
-              v-html="item.content"
-            ></div>
+            <div class="reply-content markdown-body" v-html="item.content" />
             <nv-reply
               v-if="userInfo.loginname && replyId === item.id"
               :reply-to="item.author.loginname"
@@ -82,15 +73,15 @@
               :topic-id="topicId"
               :focus="true"
               @onReply="handleReply"
-            ></nv-reply>
+            />
           </li>
         </ul>
       </section>
 
-      <nv-reply v-if="userInfo.loginname" :topic-id="topicId"></nv-reply>
+      <nv-reply v-if="userInfo.loginname" :topic-id="topicId" />
     </div>
-    <nv-top></nv-top>
-    <nv-load :show="showLoad"></nv-load>
+    <nv-top />
+    <nv-load :show="showLoad" />
   </div>
 </template>
 

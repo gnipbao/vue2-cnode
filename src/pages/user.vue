@@ -1,10 +1,10 @@
 <template>
   <div>
-    <nv-head title="用户信息"></nv-head>
+    <nv-head title="用户信息" />
     <section class="user-home">
       <div class="info">
         <img :src="userInfo.avatar_url" class="avatar" alt="头像" />
-        <p class="name" v-text="userInfo.loginname"></p>
+        <p class="name" v-text="userInfo.loginname" />
         <div class="bottom">
           <div class="score">积分：{{ userInfo.score }}</div>
           <div class="time">
@@ -13,7 +13,7 @@
         </div>
       </div>
     </section>
-    <nv-top></nv-top>
+    <nv-top />
   </div>
 </template>
 

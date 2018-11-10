@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nv-head></nv-head>
-    <router-view></router-view>
+    <nv-head />
+    <router-view />
   </div>
 </template>
 

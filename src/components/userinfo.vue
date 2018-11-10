@@ -3,14 +3,14 @@
     <!-- 未登录 -->
     <div class="login-no" v-if="!userInfo.loginname">
       <router-link :to="{ name: 'login' }">
-        <i class="iconfont icon-denglu"></i>登录
+        <i class="iconfont icon-denglu" />登录
       </router-link>
     </div>
     <!-- 已登录 -->
     <div v-else>
       <div class="login-yes">
         <img v-if="userInfo.avatar_url" :src="userInfo.avatar_url" />
-        <span class="login-name" v-text="userInfo.loginname"></span>
+        <span class="login-name" v-text="userInfo.loginname" />
       </div>
       <div class="login-out" @click="handleLoginOut">退出</div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nv-head title="消息中心"></nv-head>
+    <nv-head title="消息中心" />
     <section class="message">
       <ul class="tab">
         <li
@@ -35,20 +35,17 @@
             </span>
           </div>
         </section>
-        <div
-          class="reply-content markdown-body"
-          v-html="item.reply.content"
-        ></div>
+        <div class="reply-content markdown-body" v-html="item.reply.content" />
         <router-link :to="{ name: 'topic', params: { id: item.topic.id } }">
           <div class="topic-title">话题：{{ item.topic.title }}</div>
         </router-link>
       </div>
 
       <div class="no-data" v-show="noData">
-        <i class="iconfont icon-empty"></i> 暂无数据!
+        <i class="iconfont icon-empty" /> 暂无数据!
       </div>
     </section>
-    <nv-load :show="showLoad"></nv-load>
+    <nv-load :show="showLoad" />
   </div>
 </template>
 <script>

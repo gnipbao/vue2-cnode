@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nv-head title="新建主题"></nv-head>
+    <nv-head title="新建主题" />
     <div class="topic-create">
       <div class="category">
         <span>选择板块：</span>
@@ -23,8 +23,7 @@
           v-model.trim="topic.content"
           rows="15"
           placeholder="支持Markdown语法,请注意标记代码"
-        >
-        </textarea>
+        />
       </div>
       <button @click="handleSubmit">提交</button>
     </div>

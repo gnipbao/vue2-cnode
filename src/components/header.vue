@@ -1,16 +1,16 @@
 <template>
   <div>
-    <span class="page-cover" @click="toggleMenu" v-if="show"> </span>
+    <span class="page-cover" @click="toggleMenu" v-if="show" />
     <header class="header-bar">
-      <span class="menu-btn" @click="toggleMenu"></span>
+      <span class="menu-btn" @click="toggleMenu" />
       <span class="info">
-        <span class="vue-logo"></span> <span>{{ title }}</span>
+        <span class="vue-logo" /> <span>{{ title }}</span>
       </span>
       <router-link :to="{ name: 'create' }" class="publish-btn">
-        <i class="iconfont icon-publish green"></i>
+        <i class="iconfont icon-publish green" />
       </router-link>
     </header>
-    <nv-menu :show="show"></nv-menu>
+    <nv-menu :show="show" />
   </div>
 </template>
 

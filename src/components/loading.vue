@@ -1,6 +1,6 @@
 <template>
   <div v-show="show" class="mask">
-    <div class="loading"><i class="iconfont icon-loading"></i></div>
+    <div class="loading"><i class="iconfont icon-loading" /></div>
   </div>
 </template>
 
