@@ -13,7 +13,13 @@ npm-debug*
 npm-debug.log
 .publish
 .codingpages
-.idea
 .yarn.lock
 .yarn-error.log
-.vscode/*
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
